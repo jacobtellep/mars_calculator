@@ -1,9 +1,21 @@
-fn main() {
-    println!("Hello, world!");
+use std::io;
 
-    calculate_weight_on_mars(100.0);
+fn main() {
+    let mut input = String::new();
+    io::stdin().read_line(&mut input);
+    let mut mars_weight = calculate_weight_on_mars(100.0);
+    mars_weight = mars_weight * 1000.0;
+    println!("Weight on Mars: {}g", mars_weight);
 }
 
 fn calculate_weight_on_mars(weight: f32) -> f32 {
-    50.0 // you don't have to use return keyword and semicolon
+    (weight / 9.81) * 3.711
 }
+
+// Ownership rules in Rust
+
+// 1. Each value in Rust is owned by a variable.
+
+// 2. When the owner/variable goes out of scope, its value is deallocated.
+
+// 3. There can only be ONE owner at a time.
